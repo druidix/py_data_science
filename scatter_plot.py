@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 df = pd.read_csv('data/Advertising.csv')
 
-plt.scatter(df['TV'], df['sales'])
+plt.scatter(df['TV'], df['Sales'])
 plt.xlabel('TV Budget')
 plt.ylabel('Sales')
 plt.title('Sales of units by TV budget')
