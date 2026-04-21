@@ -88,4 +88,25 @@ beta2 = model3.coef_[features.index(best_cat_feature)]
 
 # Display betas in a DataFrame.
 coefs = pd.DataFrame([beta0, beta1, beta2], index=['Intercept']+features, columns=['beta_value'])
-print(coefs)
+print("COEFS: ", coefs)
+print("STUDENT_YES:\n", features.index(best_cat_feature))
+
+# Visualize crude measure of feature importance.
+sns.barplot(data=coefs.T, orient='h').set(title='Model Coefficients');
+# plt.show()
+
+### edTest(test_prediction_lines) ###
+# Create space of x values to predict on.
+x_space = np.linspace(x['Income'].min(), x['Income'].max(), 1000)
+
+# Generate 2 sets of predictions based on best categorical feature value.
+# When categorical feature is true/present (1)
+y_hat_yes = beta0 + beta1 * x_space + beta2 * features.index(best_cat_feature)
+# # When categorical feature is false/absent (0)
+y_hat_no = beta0 + beta1 * x_space + 0 * features.index(best_cat_feature)
+
+# Plot the 2 prediction lines for students and non-students.
+ax = sns.scatterplot(data=pd.concat([x_train_design, y_train], axis=1), x='Income', y='Balance', hue=best_cat_feature, alpha=0.8)
+ax.plot(x_space, y_hat_no)
+ax.plot(x_space, y_hat_yes);
+plt.show()
