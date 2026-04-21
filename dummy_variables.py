@@ -32,7 +32,7 @@ except Exception as e:
 
 ### edTest(test_model1) ###
 # Fit a linear model using only the numeric features in the dataframe.
-numeric_features = ['Limit', 'Rating', 'Cards', 'Age', 'Education']
+numeric_features = ['Income', 'Limit', 'Rating', 'Cards', 'Age', 'Education']
 model1 = LinearRegression().fit(x_train[numeric_features], y_train)
 
 # # Report train and test R2 scores.
