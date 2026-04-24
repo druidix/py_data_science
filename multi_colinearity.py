@@ -58,3 +58,8 @@ for i in range(4):
 print('\nBy multi-Linear regression on all variables:')
 for i in range(4):
     pprint(f'Value of beta{i+1} = {round(multi_coef[i],2)}')
+    
+# Helper code to visualize the heatmap of the covariance matrix
+corrMatrix = df[['x1','x2','x3','x4']].corr() 
+sns.heatmap(corrMatrix, annot=True) 
+plt.show()
