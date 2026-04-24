@@ -80,3 +80,6 @@ coverage.xml
 # OS files
 .DS_Store
 Thumbs.db
+# Helper file for python data science class
+helper.py
+poly_helper.py
