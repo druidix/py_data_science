@@ -83,3 +83,37 @@ plt.xlabel("x values")
 plt.ylabel("y values")
 plt.legend()
 plt.show()
+
+# Calculate the residual values for the polynomial model
+poly_residuals = y_test - y_poly_pred
+
+# Calculate the residual values for the linear model
+lin_residuals = y_test - y_lin_pred
+
+# Helper code to plot the residual values
+# Plot the histograms of the residuals for the two cases
+
+# Distribution of residuals
+fig, ax = plt.subplots(1,2, figsize = (10,4))
+bins = np.linspace(-20,20,20)
+ax[0].set_xlabel('Residuals')
+ax[0].set_ylabel('Frequency')
+
+# Plot the histograms for the polynomial regression
+ax[0].hist(poly_residuals, bins, label = 'poly residuals', color='#B2D7D0', alpha=0.6)
+
+# Plot the histograms for the linear regression
+ax[0].hist(lin_residuals, bins, label = 'linear residuals', color='#EFAEA4', alpha=0.6)
+
+ax[0].legend(loc = 'upper left')
+
+# Distribution of predicted values with the residuals
+ax[1].hlines(0,-75,75, color='k', ls='--', alpha=0.3, label='Zero residual')
+ax[1].scatter(y_poly_pred, poly_residuals, s=10, color='#B2D7D0', label='Polynomial predictions')
+ax[1].scatter(y_lin_pred, lin_residuals, s = 10, color='#EFAEA4', label='Linear predictions' )
+ax[1].set_xlim(-75,75)
+ax[1].set_xlabel('Predicted values')
+ax[1].set_ylabel('Residuals')
+ax[1].legend(loc = 'upper left')
+fig.suptitle('Residual Analysis (Linear vs Polynomial)')
+plt.show();
