@@ -19,7 +19,7 @@ b_init = 785.1811367994083
 w_init = np.array([ 0.39133535, 18.75376741, -53.36032453, -26.42131618])
 print(f"w_init shape: {w_init.shape}, b_init type: {type(b_init)}")
 
-def predict_single_loop(x, w, b): 
+def predict_single_loop(x, w, b) -> np.floating: 
     """
     single predict using linear regression
     
@@ -47,7 +47,7 @@ print(f"\n\nSINGLE LOOP:\nx_vec shape {x_vec.shape}, x_vec value: {x_vec}")
 f_wb = predict_single_loop(x_vec, w_init, b_init)
 print(f"f_wb shape {f_wb.shape}, prediction: {f_wb}")
 
-def predict(x, w, b): 
+def predict(x, w, b) : 
     """
     single predict using linear regression
     Args:
